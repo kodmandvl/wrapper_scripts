@@ -1,11 +1,12 @@
-# bash_wrappers 
+# wrapper_scripts repository 
 
-Wrappers/Aliases/Scripts for run other tools with specific parameters. 
+Wrapper scripts for run other tools with specific parameters. 
 
-## Wrappers-Scripts for tools: 
+## Wrapper scripts for tools: 
 
-- Minikube (Local Kubernetes Cluster, [see here](https://github.com/kubernetes/minikube)) 
-- Kind (Local Kubernetes Cluster, [see here](https://github.com/kubernetes-sigs/kind))
-- Git (git client)
-- YC (CLI for Yandex Cloud, [see here](https://cloud.yandex.com/en/docs/cli/quickstart))
+- minikube (Local Kubernetes Cluster, [see here](https://github.com/kubernetes/minikube)) 
+- kind (Local Kubernetes Cluster, [see here](https://github.com/kubernetes-sigs/kind)) 
+- git (git client) 
+- yc (CLI for Yandex Cloud, [see here](https://cloud.yandex.com/en/docs/cli/quickstart)) 
+
 
