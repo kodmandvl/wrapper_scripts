@@ -9,4 +9,5 @@ Wrapper scripts for run other tools with specific parameters.
 - git (git client) 
 - yc (CLI for Yandex Cloud, [see here](https://cloud.yandex.com/en/docs/cli/quickstart)) 
 - kubectl (my simple analogues of [kubectx and kubens](https://github.com/ahmetb/kubectx) for [kubectl](https://kubernetes.io/docs/reference/kubectl/)) 
+- docker ([Docker Engine](https://docs.docker.com/engine/)) 
 
