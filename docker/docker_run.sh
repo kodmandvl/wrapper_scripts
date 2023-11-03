@@ -5,7 +5,7 @@
 # 3rd argument (if needed): other docker run command options enclosed in quotes or double quotes
 # 4th argument (if needed): command with arguments for run in container enclosed in quotes or double quotes
 # Examples:
-# ./docker_run.sh postgres:13.12-alpine3.18 pg "-p 5432:5432 -v ${HOME}/temp/pg:/var/lib/postgresql/data -e POSTGRES_PASSWORD=${PGPASSWORD}"
+# ./docker_run.sh postgres:13.12-alpine3.18 mypg13 "-p 5432:5432 -v ${HOME}/temp/mypg13:/var/lib/postgresql/data -e POSTGRES_PASSWORD=${PGPASSWORD} -v ${HOME}/temp/share/mypg13:/share"
 # ./docker_run.sh postgres:16 pg16 "-p 5416:5432 -v ${HOME}/temp/pg16:/var/lib/postgresql/data -e POSTGRES_PASSWORD=${PGPASSWORD}"
 # ./docker_run.sh postgres:15 pg15 "-p 5415:5432 -v ${HOME}/temp/pg15:/var/lib/postgresql/data -e POSTGRES_PASSWORD=${PGPASSWORD}"
 # ./docker_run.sh postgres:14 pg14 "-p 5414:5432 -v ${HOME}/temp/pg14:/var/lib/postgresql/data -e POSTGRES_PASSWORD=${PGPASSWORD}"
