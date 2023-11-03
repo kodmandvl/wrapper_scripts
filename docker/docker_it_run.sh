@@ -9,7 +9,7 @@
 # ./docker_it_run.sh debian:11 mydebian11 "-u root:root -w /root -p 8011:80 -p 5411:5432 -v ${HOME}/temp/share/mydebian11:/share"
 # ./docker_it_run.sh debian:12 mydebian12 "-u root:root -w /root -p 8012:80 -p 5412:5432 -v ${HOME}/temp/share/mydebian12:/share"
 # ./docker_it_run.sh alt:p8 myaltp8 "-u root:root -w /root -p 8008:80 -p 5408:5432 -v ${HOME}/temp/share/myaltp8:/share"
-# ./docker_it_run.sh rockylinux:8.8 rockylinux88
+# ./docker_it_run.sh rockylinux:8.8 rocky88
 # ./docker_it_run.sh debian:11 debian11
 # ./docker_it_run.sh debian:12 debian12
 # ./docker_it_run.sh fedora:38 fedora38
