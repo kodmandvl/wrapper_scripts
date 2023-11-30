@@ -9,7 +9,7 @@ yc config list
 
 This step (yc init) is enough to create a VM. 
 
-But to create a managed Kubernetes cluster, you also need to create a key and service accounts. 
+But to create a managed Kubernetes cluster, you also need to create a Key and Service Accounts and add roles for Service Accounts. 
 
 - KMS symmetric key:
 
@@ -22,7 +22,7 @@ yc kms symmetric-key get my-key
 yc kms symmetric-key list
 ```
 
-- Service accounts:
+- Service Accounts:
 
 ```bash
 yc iam service-account create --name my-k8s-sa
@@ -30,5 +30,24 @@ yc iam service-account get my-k8s-sa
 yc iam service-account create --name my-node-sa
 yc iam service-account get my-node-sa
 yc iam service-account list
+```
+
+- Roles for Service Accounts:
+
+```bash
+yc iam role list
+yc iam service-account list
+yc config list
+yc resource-manager folder list-access-bindings <folder-id>
+```
+
+```
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role vpc.publicAdmin
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role load-balancer.admin
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role k8s.clusters.agent
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role logging.writer
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-node-sa-id> --role container-registry.images.puller
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-node-sa-id> --role container-registry.images.pusher
+yc resource-manager folder list-access-bindings <folder-id>
 ```
 

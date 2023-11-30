@@ -12,7 +12,7 @@ echo "CREATING $1 YC MANAGED-KUBERNETES CLUSTER AFTER 5 SECONDS..."
 echo
 sleep 5
 yc managed-kubernetes cluster create --name $1 \
-  --description My_K8S_cluster_for_education \
+  --description My_K8S_cluster_for_prod \
   --network-name default \
   --zone ru-central1-a \
   --subnet-name default-ru-central1-a \
