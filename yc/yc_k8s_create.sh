@@ -5,7 +5,7 @@
 # 4th argument: node-group-name
 # 5th argument: count of nodes in node-group
 # Example:
-# ./yc_k8s_create.sh testk8s 10.XX.0.0/16 10.YY.0.0/16 testk8s-workers 3
+# ./yc_k8s_create.sh test 10.99.0.0/16 10.55.0.0/16 test-workers 3
 # ATTENTION! Before run this script you should create KMS key and set correct values for other parameters in script: kms-key-name, service-account-name, node-service-account-name, your username for SSH, your public key for SSH, zone, subnet-name, version, etc.
 echo
 echo "CREATING $1 YC MANAGED-KUBERNETES CLUSTER AFTER 5 SECONDS..."
@@ -21,11 +21,11 @@ yc managed-kubernetes cluster create --name $1 \
   --version 1.24 \
   --cluster-ipv4-range $2 \
   --service-ipv4-range $3 \
-  --kms-key-name your_key_from_kms \
+  --kms-key-name my-key \
   --node-ipv4-mask-size 24 \
   --auto-upgrade=false \
-  --service-account-name your_sa_name \
-  --node-service-account-name your_node_sa_name \
+  --service-account-name my-k8s-sa \
+  --node-service-account-name my-node-sa \
   # end of creating
 echo
 echo "GET $1 CLUSTER:"
