@@ -41,13 +41,28 @@ yc config list
 yc resource-manager folder list-access-bindings <folder-id>
 ```
 
-```
+```bash
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role vpc.publicAdmin
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role load-balancer.admin
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role k8s.clusters.agent
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role logging.writer
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-node-sa-id> --role container-registry.images.puller
 yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-node-sa-id> --role container-registry.images.pusher
+yc resource-manager folder list-access-bindings <folder-id>
+```
+
+When creating a cluster in the browser, using the management console, service accounts with the above roles are automatically created. 
+
+These roles are enough for the cluster to work. 
+
+But if you want and need it for some reason, then you can add, for example, some of the following roles: 
+
+```bash
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role admin
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role editor
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role k8s.admin
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-k8s-sa-id> --role k8s.editor
+yc resource-manager folder add-access-binding <folder-id> --subject serviceAccount:<my-node-sa-id> --role container-registry.images.scanner
 yc resource-manager folder list-access-bindings <folder-id>
 ```
 
