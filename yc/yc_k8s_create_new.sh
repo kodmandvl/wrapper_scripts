@@ -58,6 +58,7 @@ yc managed-kubernetes node-group create \
   --fixed-size $6 \
   --memory 8 \
   --name $5 \
+  --node-name node{instance.index}-$5 \
   --container-runtime containerd \
   --network-interface subnets=default-ru-central1-a,ipv4-address=nat \
   --version $2 \
@@ -89,6 +90,7 @@ yc managed-kubernetes node-group create \
   --fixed-size $8 \
   --memory 8 \
   --name $7 \
+  --node-name node{instance.index}-$7 \
   --container-runtime containerd \
   --network-interface subnets=default-ru-central1-a,ipv4-address=nat \
   --version $2 \
