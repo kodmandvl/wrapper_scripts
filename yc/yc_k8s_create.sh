@@ -18,7 +18,7 @@ yc managed-kubernetes cluster create --name $1 \
   --subnet-name default-ru-central1-a \
   --public-ip \
   --release-channel stable \
-  --version 1.24 \
+  --version 1.27 \
   --cluster-ipv4-range $2 \
   --service-ipv4-range $3 \
   --kms-key-name my-key \
@@ -56,7 +56,7 @@ yc managed-kubernetes node-group create \
   --container-runtime containerd \
   --preemptible \
   --network-interface subnets=default-ru-central1-a,ipv4-address=nat \
-  --version 1.24 \
+  --version 1.27 \
   --max-expansion 8 \
   --max-unavailable 8 \
   --platform standard-v3 \
