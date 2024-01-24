@@ -1,14 +1,14 @@
 # Script for create kind cluster with kind-config.yml
 # 1st argument (optional): cluster name (default: kind)
-# 2nd argument (optional): kubernetes version (default: 1.27.3)
+# 2nd argument (optional): kindest/node version (default: 1.27.3)
 # 3rd argument (optional): config file (default: ./kind-config.yml)
 # Examples:
 # ./kind_create_cluster.sh
 # ./kind_create_cluster.sh - - -
 # ./kind_create_cluster.sh mykind
 # ./kind_create_cluster.sh mykind - -
-# ./kind_create_cluster.sh mykind 1.24
-# ./kind_create_cluster.sh mykind 1.24 ~/temp/mykindconfig.yml
+# ./kind_create_cluster.sh mykind 1.24.15
+# ./kind_create_cluster.sh mykind 1.24.15 ~/temp/mykindconfig.yml
 CLUSTER=${1}
 K8SVER=${2}
 CFGFILE=${3}
