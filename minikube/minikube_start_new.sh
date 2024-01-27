@@ -12,8 +12,8 @@
 # ./minikube_start_new.sh minikube-virtualbox 1.27.4 virtualbox docker 4 8192m
 # For cluster with default profile name (minikube) on MacOS with podman driver, cri-o container runtime:
 # ./minikube_start_new.sh minikube 1.27.4 podman cri-o 3 5120m
-# For cluster with test profile name, 1.24 k8s version, virtualbox driver, cri-o container runtime, 4 CPUs and 8192m RAM:
-# ./minikube_start_new.sh test 1.24 virtualbox cri-o 4 8192m
+# For cluster with test profile name, 1.24.16 k8s version, virtualbox driver, cri-o container runtime, 4 CPUs and 8192m RAM:
+# ./minikube_start_new.sh test 1.24.16 virtualbox cri-o 4 8192m
 # For cluster with default parameters from this script:
 # ./minikube_start_new.sh
 # or:
