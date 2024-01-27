@@ -1,0 +1,50 @@
+# New general script for run minikube
+# 1st argument (optional): cluster name, minikube profile name (default: minikube)
+# 2nd argument (optional): kubernetes version (default: 1.27.4)
+# 3rd argument (optional): driver (default: docker)
+# 4th argument (optional): container runtime (default: docker)
+# 5th argument (optional): cpu count (default: 2)
+# 6th argument (optional): memory (default: 4096m)
+# Examples:
+# For cluster with minikube-docker profile name on physical host with 8CPUs and 16GB RAM:
+# ./minikube_start.sh minikube-docker 1.27.4 docker docker 4 8192m
+# For cluster with minikube-virtualbox profile name on physical host with 8CPUs and 16GB RAM:
+# ./minikube_start.sh minikube-virtualbox 1.27.4 virtualbox docker 4 8192m
+# For cluster with default profile name (minikube) on MacOS with podman driver, cri-o container runtime:
+# ./minikube_start.sh minikube 1.27.4 podman cri-o 3 5120m
+# For cluster with default parameters from this script:
+# ./minikube_start.sh
+# or:
+# ./minikube_start.sh - - - - - -
+CLUSTER=${1}
+K8SVER=${2}
+DRIVER=${3}
+CR=${4}
+CPU=${5}
+MEM=${6}
+if [[ "${1}" == "" ]] || [[ "${1}" == "-" ]]; then
+CLUSTER=minikube
+fi
+if [[ "${2}" == "" ]] || [[ "${2}" == "-" ]]; then
+K8SVER=1.27.4
+fi
+if [[ "${3}" == "" ]] || [[ "${3}" == "-" ]]; then
+DRIVER=docker
+fi
+if [[ "${4}" == "" ]] || [[ "${4}" == "-" ]]; then
+CR=docker
+fi
+if [[ "${5}" == "" ]] || [[ "${5}" == "-" ]]; then
+CPU=2
+fi
+if [[ "${6}" == "" ]] || [[ "${6}" == "-" ]]; then
+MEM=4096m
+fi
+echo
+echo "START ${CLUSTER} MINIKUBE CLUSTER (PROFILE) AFTER 5 SECONDS:"
+echo
+echo "minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM}"
+echo
+sleep 5
+minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM}
+echo
