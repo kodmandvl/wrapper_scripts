@@ -7,15 +7,17 @@
 # 6th argument (optional): memory (default: 4096m)
 # Examples:
 # For cluster with minikube-docker profile name on physical host with 8CPUs and 16GB RAM:
-# ./minikube_start.sh minikube-docker 1.27.4 docker docker 4 8192m
+# ./minikube_start_new.sh minikube-docker 1.27.4 docker docker 4 8192m
 # For cluster with minikube-virtualbox profile name on physical host with 8CPUs and 16GB RAM:
-# ./minikube_start.sh minikube-virtualbox 1.27.4 virtualbox docker 4 8192m
+# ./minikube_start_new.sh minikube-virtualbox 1.27.4 virtualbox docker 4 8192m
 # For cluster with default profile name (minikube) on MacOS with podman driver, cri-o container runtime:
-# ./minikube_start.sh minikube 1.27.4 podman cri-o 3 5120m
+# ./minikube_start_new.sh minikube 1.27.4 podman cri-o 3 5120m
+# For cluster with test profile name, 1.24 k8s version, virtualbox driver, cri-o container runtime, 4 CPUs and 8192m RAM:
+# ./minikube_start_new.sh test 1.24 virtualbox cri-o 4 8192m
 # For cluster with default parameters from this script:
-# ./minikube_start.sh
+# ./minikube_start_new.sh
 # or:
-# ./minikube_start.sh - - - - - -
+# ./minikube_start_new.sh - - - - - -
 CLUSTER=${1}
 K8SVER=${2}
 DRIVER=${3}
