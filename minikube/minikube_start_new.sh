@@ -5,9 +5,10 @@
 # 4th argument (optional): container runtime (default: docker)
 # 5th argument (optional): cpu count (default: 2)
 # 6th argument (optional): memory (default: 4096m)
+# 7th argument (optional): additional option (for example, addons)
 # Examples:
-# For cluster with minikube-docker profile name on physical host with 8CPUs and 16GB RAM:
-# ./minikube_start_new.sh minikube-docker 1.27.4 docker docker 4 8192m
+# For cluster with minikube profile name on physical host with 8CPUs and 16GB RAM, containerd runtime and addons (metallb and ingress):
+# ./minikube_start_new.sh minikube 1.28 docker containerd 4 8192m --addons=metallb,ingress
 # For cluster with minikube-virtualbox profile name on physical host with 8CPUs and 16GB RAM:
 # ./minikube_start_new.sh minikube-virtualbox 1.27.4 virtualbox docker 4 8192m
 # For cluster with default profile name (minikube) on MacOS with podman driver, cri-o container runtime:
@@ -24,6 +25,7 @@ DRIVER=${3}
 CR=${4}
 CPU=${5}
 MEM=${6}
+ADDONS=${7}
 if [[ "${1}" == "" ]] || [[ "${1}" == "-" ]]; then
 CLUSTER=minikube
 fi
@@ -45,8 +47,8 @@ fi
 echo
 echo "START ${CLUSTER} MINIKUBE CLUSTER (PROFILE) AFTER 5 SECONDS:"
 echo
-echo "minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM}"
+echo "minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM} ${ADDONS}"
 echo
 sleep 5
-minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM}
+minikube start -p ${CLUSTER} --kubernetes-version=v${K8SVER} --driver=${DRIVER} --container-runtime=${CR} --cpus=${CPU} --memory=${MEM} ${ADDONS}
 echo
