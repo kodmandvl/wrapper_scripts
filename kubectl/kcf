@@ -11,3 +11,8 @@ else
   echo "===== GET CONTEXTS: ====="
   kubectl config get-contexts
 fi
+# Check KUBECONFIG env variable for warning:
+if [ ! -z "$KUBECONFIG" -a "$KUBECONFIG"!=" " ]; then
+  echo "[WARN] Note that the KUBECONFIG env variable is also set: export KUBECONFIG=${KUBECONFIG}"
+  echo "[WARN] To unset the KUBECONFIG env variable you should run: unset KUBECONFIG"
+fi
