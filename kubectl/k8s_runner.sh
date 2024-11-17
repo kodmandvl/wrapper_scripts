@@ -20,20 +20,52 @@ else
 fi
 if [ ! -z "$KCF_DIR" -a "$KCF_DIR"!=" " -a ! -z "$K8S_SCRIPT" -a "$K8S_SCRIPT"!=" " ]; then
   echo "Run $K8S_SCRIPT script on K8s clusters with KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE"
+  echo
+  echo "$K8S_SCRIPT script":
+  echo
+  echo "####################################################################################################"
+  cat `which $K8S_SCRIPT`
+  echo "####################################################################################################"
+  echo
+  echo "KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE":
+  echo
+  echo "####################################################################################################"
+  ls -1 $KCF_DIR/$FILENAME_TEMPLATE
+  echo "####################################################################################################"
+  echo
 else
   echo "Error! You should set 1st argument (directory with kubeconfig files) and 2nd argument (script for run on K8s clusters)"
+  echo
   exit 1
 fi
+read -p "Do you confirm running the script? [Y/y/N/n] " yn
 echo
-echo "----------------------------------------------------------------------------------------------------"
-echo
-# Run:
-for f in $KCF_DIR/$FILENAME_TEMPLATE; do
-  export KUBECONFIG=$f
-  $K8S_SCRIPT
+if [[ "$yn" =~ ^[Nn]$ ]]; then
+  echo "The script will not run."
+  echo "Exit."
   echo
-  echo "----------------------------------------------------------------------------------------------------"
-  echo
-done
-echo Done.
-echo
+  exit
+else
+  if [[ "$yn" =~ ^[Yy]$ ]]; then
+    echo "The script is running..."
+    echo
+    echo "----------------------------------------------------------------------------------------------------"
+    echo
+    # Run:
+    for f in $KCF_DIR/$FILENAME_TEMPLATE; do
+      export KUBECONFIG=$f
+      $K8S_SCRIPT
+      echo
+      echo "----------------------------------------------------------------------------------------------------"
+      echo
+    done
+    echo Done.
+    echo
+  else
+    echo "You should select the correct answer options: [Y/y/N/n]"
+    echo "The script will not run."
+    echo "Exit."
+    echo
+    exit
+  fi
+fi
