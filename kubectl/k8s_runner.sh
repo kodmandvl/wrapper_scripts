@@ -21,13 +21,13 @@ fi
 if [ ! -z "$KCF_DIR" -a "$KCF_DIR"!=" " -a ! -z "$K8S_SCRIPT" -a "$K8S_SCRIPT"!=" " ]; then
   echo "Run $K8S_SCRIPT script on K8s clusters with KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE"
   echo
-  echo "$K8S_SCRIPT script":
+  echo "$K8S_SCRIPT script:"
   echo
   echo "####################################################################################################"
   cat `which $K8S_SCRIPT`
   echo "####################################################################################################"
   echo
-  echo "KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE":
+  echo "KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE:"
   echo
   echo "####################################################################################################"
   ls -1 $KCF_DIR/$FILENAME_TEMPLATE
