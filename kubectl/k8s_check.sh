@@ -19,7 +19,7 @@ if [ ! -z "$KCF_DIR" -a "$KCF_DIR"!=" " ]; then
   echo "Check K8s clusters with KUBECONFIG files from $KCF_DIR/$FILENAME_TEMPLATE"
   echo
 else
-  echo "Error! You should set 1st argument (directory with kubeconfig files)"
+  echo -e "\033[0;31mError! You should set 1st argument (directory with kubeconfig files).\033[0m"
   echo
   exit 1
 fi
@@ -42,17 +42,15 @@ for f in $KCF_DIR/$FILENAME_TEMPLATE; do
   if [ $RET_VAL -ne 0 ] ; then
     RET_VAL_END=$RET_VAL
     ERRORS_COUNT=`expr $ERRORS_COUNT + 1`
-    echo "$f - FAILURE!"
+    echo -e "\033[0;31m$f - FAILURE!\033[0m"
     echo
   fi
 done
 if [ $RET_VAL_END -ne 0 ] ; then
-  echo "It is not alright: return code is $RET_VAL_END. FAILURE for $ERRORS_COUNT of $CLUSTERS_COUNT clusters."
+  echo -e "\033[0;31mIt is not alright: return code is $RET_VAL_END. FAILURE for $ERRORS_COUNT of $CLUSTERS_COUNT clusters.\033[0m"
   echo
   exit $RET_VAL_END
 else
-  echo "It is OK"
+  echo -e "\033[0;32mIt is OK\033[0m"
   echo
 fi
-echo Done.
-echo
