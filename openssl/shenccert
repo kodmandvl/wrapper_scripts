@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo
+echo "########## CERTIFICATE: ##########"
+echo
+echo -n "${1}" | base64 -d | openssl x509 -noout -text
+echo
+echo "########## DATES: ##########"
+echo
+echo -n "${1}" | base64 -d | openssl x509 -noout -dates
+echo
