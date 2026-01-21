@@ -1,0 +1,16 @@
+#!/bin/bash
+
+[ -f "$1" ] || exit
+
+if [[ $1 =~ \.(csr|req)$ ]]; then
+ openssl req -in "$1" -text -noout
+fi
+
+if [[ $1 =~ \.(conf|yaml|yml)$ ]]; then
+ reqfile=$(mktemp)
+ grep 'request:' "$1"| awk '{ print $2}' | base64 -d > "$reqfile"
+ cat "$reqfile"
+ openssl req -in "$reqfile" -text -noout
+ echo "TEMPORARY FILE: $reqfile"
+fi
+

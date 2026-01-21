@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo
+echo "########## CERTIFICATE REQUEST: ##########"
+echo
+echo -n "${1}" | base64 -d | openssl req -noout -text
+echo
