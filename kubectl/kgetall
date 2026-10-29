@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Get all resources of target namespace (${1} argument)
+# It's simple analog for ketall utilite
+# Example:
+# kgetall my-namespace
+
+kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl -n ${1} get --show-kind --ignore-not-found
